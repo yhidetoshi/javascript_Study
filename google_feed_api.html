@@ -1,0 +1,52 @@
+<script type="text/javascript" 
+	    src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js">
+	    </script>
+        <script src="http://www.google.com/jsapi"<</script><div style="background-color:#EDF7FF;">
+        <h5 align="center">Gigazineニュースの一覧</h5>
+    </div>
+    <br/>
+     <div align="center" id="feedContent">></div>
+
+<script>
+        google.load("feeds", "1");
+ 
+    function initialize()
+    {
+        var url = "http://feed.rssad.jp/rss/gigazine/rss_2.0";     // 取得したいフィードURL
+        var news_num = 1;                                          //ニュースの数
+        var feedContent = document.getElementById("feedContent");
+        url = url + "?" + (new Date()).getTime();                  
+        
+        var html = "";
+        var feed = new google.feeds.Feed(url);                     //フィードを取得する時に取得するエントリ数を指定する
+        feed.setNumEntries(news_num); 
+        // ニュース毎に表示
+        feed.load(function(result)
+        {
+            if (!result.error)
+            {
+                for (var i = 0; i < result.feed.entries.length; i++ )
+                {
+                    var entry     = result.feed.entries[i];
+                    var title     = entry.title;                       // 記事のタイトル
+                    var content   = entry.content;                   // 記事の要約（提供されていない場合も多い）
+                    var link      = entry.link;                         // 記事へのリンク
+                    var date      = new Date(entry.publishedDate);      // 記事の更新日時
+                     
+                        html += "<h4><dl>";
+                        html += "<dt><a href='" + link + "' target='_blank'>" + title + "</a></dt></h4>";
+                        html += "<dd>" + content + "</dd>";
+                        html += "<dd class='date'>" + date + "</dd>";
+                        html += "</dl>";
+                        html += "<hr>";
+                }
+                    feedContent.innerHTML = html;
+            }
+            else{
+                    alert(result.error.code + ":" + result.error.message);
+            }
+        });
+    }
+ 
+        google.setOnLoadCallback(initialize);
+     </script>
