@@ -1,0 +1,11 @@
+<script type="text/javascript">
+function display_prompt()
+{
+	var fname = prompt("あなたの名前を入力してください:" , "input_here")
+	document.getElementById("msg").innerHTML="こんにちは" + fname
+}
+</script>
+<input type="button" onclick="display_prompt()" value="プロンプトBox表示"/>
+<br/><br/>
+
+<p id="msg"></p>
