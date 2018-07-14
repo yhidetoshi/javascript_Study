@@ -1,10 +1,20 @@
-# study_javascript
-- js読み込み
-- 無名関数(Unnamed function)
-- 即時関数(Immediate function)
-- 変数宣言、変数表示
-- 警告Window表示
-- 確認Box_window
-- プロンプトBox
-- 現在時刻の表示
-- Google Feed APIの活用でニュース取得
+# JavaScript
+
+- 環境
+  - OS
+    - Mac
+  - 実行方法
+    - jsc: `jsc hoge.js`
+
+- bashrcに以下を追加(今回は .zshrcに追加した)
+```
+if [[ "$OSTYPE" =~ darwin ]];then
+  jscpath="/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources"
+  if [ -f $jscpath/jsc ];then
+    export PATH=$PATH:$jscpath
+  fi
+fi
+```
+
+- `$ which jsc`
+  - `/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources/jsc`
