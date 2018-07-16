@@ -31,3 +31,18 @@ for (const key in object) {
   const value = object[key];
   print(`key:${key}, value:${value}`)
 }
+
+var myName = {
+  name: '太郎',
+  age: 20,
+  address: '東京都渋谷区'
+}
+
+for( var item in myName ){
+  print(item)
+}
+/*
+name
+age
+address
+*/
